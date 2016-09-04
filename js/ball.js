@@ -31,10 +31,14 @@ function Ball(x, y) {
     };
 
     this.changeColor = function () {
-
+        updateScore();
+        while (this.generateColor() != this.color) {
+            this.color = this.generateColor();
+        }
     };
 
     this.explode = function() {
-
+        resetScore();
+        console.log('explode');
     };
 }

@@ -3,9 +3,11 @@ function generateRings(gameCanvas, modifier) {
 
     if (!objectFactory.rings.length) {
         objectFactory.rings.push(new Ring(gameCanvas.width / 2, gameCanvas.height / 2, 100));
+        objectFactory.rings.push(new Ring(gameCanvas.width / 2, gameCanvas.height / 2 - 350, 75));
     }
 
     objectFactory.rings[0].draw(ctx, modifier);
+    objectFactory.rings[1].draw(ctx, modifier);
 }
 
 function levelGenerator(gameCanvas, modifier) {
@@ -19,6 +21,7 @@ function levelGenerator(gameCanvas, modifier) {
     objectFactory.ball.draw(ctx);
     objectFactory.ball.onKeyPress(canvasH);
 
+    trackScore();
     generateRings(gameCanvas, modifier);
 
     detectCollision();

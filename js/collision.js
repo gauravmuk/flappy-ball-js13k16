@@ -7,8 +7,8 @@ function detectCollision() {
 
         for (var i = 0; i < possibleColors.length; i++) {
 
-            var startAngle = ball.startAngle + ball.currentAngle + (Math.PI / 2 * i);
-            var endAngle = ball.endAngle + ball.currentAngle + (Math.PI / 2 * i);
+            var startAngle = ring.startAngle + ring.currentAngle + (Math.PI / 2 * i);
+            var endAngle = ring.endAngle + ring.currentAngle + (Math.PI / 2 * i);
 
             startAngle = startAngle > Math.PI * 2 ? startAngle - Math.PI * 2 : startAngle;
             endAngle = endAngle > Math.PI * 2 ? endAngle - Math.PI * 2 : endAngle;
