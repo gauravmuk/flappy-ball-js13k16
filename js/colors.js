@@ -1,0 +1,1 @@
+var possibleColors = ['#247BA0', '#70C1B3', '#F3FFBD', '#FF1654'];
