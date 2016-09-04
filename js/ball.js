@@ -22,9 +22,10 @@ function Ball(x, y) {
 
     this.onKeyPress = function (canvasH) {
         if (keysDown[32]) {
+            repositionRings();
             this.y -= this.vy;
         } else {
-            if (this.y < canvasH / 2) {
+            if (this.y < canvasH - 100) {
                 this.y += this.gravity;
             }
         }
