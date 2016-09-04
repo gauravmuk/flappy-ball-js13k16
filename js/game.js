@@ -9,8 +9,6 @@
     gameCanvas.height = window.innerHeight;
     gameCanvas.width = gameCanvas.height * 2 / 3;
 
-    var canvasRatio = gameCanvas.width / gameCanvas.height;
-
     document.body.appendChild(gameCanvas);
 
     var update = function (modifier) {
