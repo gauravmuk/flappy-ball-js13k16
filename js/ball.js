@@ -2,7 +2,7 @@ function Ball(x, y) {
     this.x = x;
     this.y = y;
     this.r = 10;
-    this.vy = 10;
+    this.vy = 5;
     this.gravity = 2.5;
     this.lineWidth = 10;
 
@@ -39,7 +39,7 @@ function Ball(x, y) {
     };
 
     this.explode = function() {
+        playExplosion();
         resetScore();
-        console.log('explode');
     };
 }

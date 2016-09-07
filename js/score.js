@@ -1,4 +1,5 @@
 function updateScore() {
+    playScoreUp();
     objectFactory.score += 1;
 }
 

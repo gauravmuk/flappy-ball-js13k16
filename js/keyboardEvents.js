@@ -1,6 +1,7 @@
 var keysDown = {};
 
 window.addEventListener('keydown', function (e) {
+    playBallJump();
     keysDown[e.keyCode] = true;
 });
 
@@ -10,6 +11,7 @@ window.addEventListener('keyup', function (e) {
 
 // Hacking space bar as touch event
 window.addEventListener('touchstart', function () {
+    playBallJump();
     keysDown[32] = true;
 });
 

@@ -9,7 +9,17 @@
 
     <style>
         body {
-            margin: 0; padding: 0; background: #000;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background: linear-gradient(
+                    to bottom,
+                    #247BA0,
+                    #247BA0 50%,
+                    #70C1B3 50%,
+                    #70C1B3
+            );
+            background-size: 100% 20px;
         }
         canvas {
             display: block; margin: 0 auto; background: #fff;
@@ -17,6 +27,8 @@
     </style>
 </head>
 <body>
+    <script src="../js/jsfxr.js"></script>
+    <script src="../js/sound.js"></script>
     <script src="../js/score.js"></script>
     <script src="../js/collision.js"></script>
     <script src="../js/keyboardEvents.js"></script>
