@@ -1,6 +1,10 @@
 function detectCollision() {
     var ball = objectFactory.ball;
 
+    if (!ball) {
+        return;
+    }
+
     for  (var j = 0; j < objectFactory.rings.length; j++) {
         var ring = objectFactory.rings[j];
 

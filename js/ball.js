@@ -1,10 +1,11 @@
-function Ball(x, y) {
+function Ball(x, y, r) {
     this.x = x;
     this.y = y;
     this.r = 10;
     this.vy = 5;
     this.gravity = 2.5;
     this.lineWidth = 10;
+    this.remove = false;
 
     this.generateColor = function () {
         return possibleColors[Math.floor(Math.random() * (possibleColors.length))];
@@ -39,6 +40,8 @@ function Ball(x, y) {
     };
 
     this.explode = function() {
+        objectFactory.gameState = 'gameOver';
+        explodeBall();
         playExplosion();
         resetScore();
     };

@@ -18,7 +18,12 @@ function appendMoreRings() {
 }
 
 function drawRings(ctx, modifier) {
+    if (!objectFactory.ball) {
+        return;
+    }
+
     objectFactory.visibleBalls = 0;
+
     for (var i = 0; i < objectFactory.rings.length; i++) {
         objectFactory.rings[i].draw(ctx, modifier);
 
@@ -46,14 +51,48 @@ function levelGenerator(gameCanvas, modifier) {
     var canvasH = gameCanvas.height;
     var ctx = gameCanvas.getContext('2d');
 
-    if (!objectFactory.ball) {
+    if (!objectFactory.gameState) {
+        objectFactory.gameState = 'playing';
+    }
+
+    if (!objectFactory.ball && objectFactory.gameState !== 'gameOver') {
         objectFactory.ball = new Ball(canvasW / 2, canvasH - 100);
     }
-    objectFactory.ball.draw(ctx);
-    objectFactory.ball.onKeyPress(canvasH);
+
+    if (objectFactory.gameState === 'gameOver') {
+        delete objectFactory.ball;
+    }
+
+    if (objectFactory.ball) {
+        objectFactory.ball.draw(ctx);
+        objectFactory.ball.onKeyPress(canvasH);
+    }
+
+    if (objectFactory.explodedBalls && objectFactory.explodedBalls.length) {
+        for (var i = 0; i < objectFactory.explodedBalls.length; i++) {
+            objectFactory.explodedBalls[i].draw(canvas.getContext('2d'));
+            objectFactory.explodedBalls[i].update();
+        }
+    }
 
     trackScore();
     generateRings(gameCanvas, modifier);
 
     detectCollision();
+}
+
+function explodeBall() {
+    objectFactory.explodedBalls = [];
+    for (var i = 0; i < 20; i++) {
+        objectFactory.explodedBalls.push(
+            new ExplodedBall(
+                objectFactory.ball.x,
+                objectFactory.ball.y,
+                objectFactory.ball.r / 2,
+                possibleColors[Math.floor(Math.random() * (possibleColors.length))]
+            )
+        );
+    }
+
+    objectFactory.ball.remove = true;
 }
