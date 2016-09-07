@@ -83,7 +83,7 @@ function levelGenerator(gameCanvas, modifier) {
 
 function explodeBall() {
     objectFactory.explodedBalls = [];
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 50; i++) {
         objectFactory.explodedBalls.push(
             new ExplodedBall(
                 objectFactory.ball.x,
