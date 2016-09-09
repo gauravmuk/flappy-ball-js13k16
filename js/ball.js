@@ -1,4 +1,4 @@
-function Ball(x, y, r) {
+function Ball(x, y) {
     this.x = x;
     this.y = y;
     this.r = 10;

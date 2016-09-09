@@ -8,6 +8,13 @@ function detectCollision() {
     for  (var j = 0; j < objectFactory.rings.length; j++) {
         var ring = objectFactory.rings[j];
 
+        if (!ring.isScoreMarked) {
+            if (ball.y < ring.y - ring.r - ring.lineWidth / 2) {
+                ring.isScoreMarked = true;
+                objectFactory.ball.changeColor();
+            }
+        }
+
         // Mind fuck logic
         if ((ball.y >= (ring.y - ring.r - ring.lineWidth / 2 - ball.r)) && (ball.y <= (ring.y - ring.r + ring.lineWidth / 2 + ball.r))) {
             var diffAngle = Math.atan(ball.r / ring.r);
@@ -21,9 +28,7 @@ function detectCollision() {
                 endAngle = endAngle > Math.PI * 2 ? endAngle - Math.PI * 2 : endAngle;
 
                 if (startAngle <= Math.PI * 1.5 - diffAngle && endAngle >= Math.PI * 1.5 + diffAngle) {
-                    if (possibleColors[i] === ball.color) {
-                        ball.changeColor();
-                    } else {
+                    if (possibleColors[i] !== ball.color) {
                         ball.explode();
                     }
                 }

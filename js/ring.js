@@ -6,6 +6,7 @@ function Ring(x, y, r) {
     this.endAngle = Math.PI * 0.5;
     this.lineWidth = 10;
     this.currentAngle = 0;
+    this.isScoreMarked = false;
 
     this.draw = function(canvasContext, modifier) {
         var circleStartAngle = this.startAngle + this.currentAngle;
