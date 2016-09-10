@@ -185,7 +185,7 @@ function drawText(string, lineNumber, _x, _y, _size) {
     var size = _size || gameCanvas.width / 32;
     var currX = _x || (gameCanvas.width - size * string.length * 4) / 2;
 
-    if (string === 'PLAY') {
+    if (string === 'PLAY' || string === 'RESTART') {
         objectFactory.currentBtn = {
             startX: currX,
             startY: _y || gameCanvas.height / 4 + (lineNumber * size * 4) + (40 * lineNumber)
@@ -209,7 +209,7 @@ function drawText(string, lineNumber, _x, _y, _size) {
         currX += size + addX;
     }
 
-    if (string === 'PLAY') {
+    if (string === 'PLAY' || string === 'RESTART') {
         objectFactory.currentBtn.endX = currX;
         objectFactory.currentBtn.endY = currY;
     }

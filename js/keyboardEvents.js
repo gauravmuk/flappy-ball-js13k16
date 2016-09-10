@@ -5,6 +5,7 @@ function clickEventHandler() {
         && objectFactory.cursor.x <= objectFactory.currentBtn.endX
         && objectFactory.cursor.y >= objectFactory.currentBtn.startY
         && objectFactory.cursor.y <= objectFactory.currentBtn.endY) {
+        keysDown = {};
         objectFactory.rings = [];
         objectFactory.ball = new Ball(gameCanvas.width / 2, gameCanvas.height - 100);
 
@@ -51,12 +52,13 @@ function bindGamePlayingEvents() {
 }
 
 function bindGameOverEvents() {
-    removeEventListener('keyup', onJumpBall);
+    removeEventListener('keydown', onJumpBall);
     removeEventListener('keyup', onGravitizeBall);
     removeEventListener('touchstart', onJumpBall);
     removeEventListener('touchend', onGravitizeBall);
 
-    // window.addEventListener('click', clickEventHandler);
+    addEventListener('mousemove', mouseMoveHandler);
+    addEventListener('click', clickEventHandler);
 }
 
 addEventListener('resize', function () {

@@ -61,8 +61,6 @@ function notStartedGameState() {
     drawText('FLAPPY', 0);
     drawText('BALL', 1);
     drawText('PLAY', 3);
-
-    // bindNotStartedGameEvents();
 }
 
 function playingGameState(modifier) {
@@ -86,7 +84,6 @@ function gameOverState() {
 
     drawText('GAME', 0);
     drawText('OVER', 1);
-
     drawText('RESTART', 3);
 }
 
