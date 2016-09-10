@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "devDependencies": {
     "gulp": "*",
-    "gulp-rename": "*",
     "gulp-uglify": "*",
-    "gulp-concat": "*"
+    "gulp-concat": "*",
+    "gulp-clean": "*"
   }
 }

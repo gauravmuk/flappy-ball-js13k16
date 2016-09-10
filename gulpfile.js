@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var clean = require('gulp-clean');
 
 gulp.task('all', function() {
     return gulp.src(['' +
@@ -18,7 +19,8 @@ gulp.task('all', function() {
     './js/ring.js',
     './js/generator.js',
     './js/game.js'])
-        .pipe(concat('all.js'))
+        .pipe(concat('all.min.js'))
         .pipe(uglify())
+        .pipe(clean({force: true}))
         .pipe(gulp.dest('./dist/'));
 });
