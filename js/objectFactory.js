@@ -1,3 +1,6 @@
 var objectFactory = {
-    rings: []
+    rings: [],
+    gameState: 'notStarted',
+    cursor: {},
+    ball: {}
 };

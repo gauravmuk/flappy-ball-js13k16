@@ -260,7 +260,7 @@ var letters = letters = {
     ]
 };
 
-function drawText(string, context, lineNumber, _x, _y, _size) {
+function drawText(string, lineNumber, _x, _y, _size) {
     var needed = [];
 
     string = string.toString();
@@ -271,10 +271,17 @@ function drawText(string, context, lineNumber, _x, _y, _size) {
         }
     }
 
-    context.fillStyle = possibleColors[1];
+    ctx.fillStyle = possibleColors[1];
 
     var size = _size || gameCanvas.width / 32;
     var currX = _x || (gameCanvas.width - size * string.length * 4) / 2;
+
+    if (string === 'PLAY') {
+        objectFactory.currentBtn = {
+            startX: currX,
+            startY: _y || gameCanvas.height / 4 + (lineNumber * size * 4) + (40 * lineNumber)
+        };
+    }
 
     for (i = 0; i < needed.length; i++) {
         letter = needed[i];
@@ -284,12 +291,17 @@ function drawText(string, context, lineNumber, _x, _y, _size) {
             var row = letter[y];
             for (var x = 0; x < row.length; x++) {
                 if (row[x]) {
-                    context.fillRect(currX + x * size, currY, size, size);
+                    ctx.fillRect(currX + x * size, currY, size, size);
                 }
             }
             addX = Math.max(addX, row.length * size);
             currY += size;
         }
         currX += size + addX;
+    }
+
+    if (string === 'PLAY') {
+        objectFactory.currentBtn.endX = currX;
+        objectFactory.currentBtn.endY = currY;
     }
 }

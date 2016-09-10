@@ -48,6 +48,7 @@ function Ball(x, y) {
 
     this.explode = function() {
         objectFactory.gameState = 'gameOver';
+        bindGameOverEvents();
         explodeBall();
         playExplosion();
         resetScore();
