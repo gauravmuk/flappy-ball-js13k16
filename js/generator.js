@@ -1,7 +1,5 @@
-var canvas;
-
 function repositionRings() {
-    if (objectFactory.ball.y < canvas.height / 2 + 100) {
+    if (objectFactory.ball.y < gameCanvas.height / 2 + 100) {
         for (var i = 0; i < objectFactory.rings.length; i++) {
             objectFactory.rings[i].y += 5;
         }
@@ -12,7 +10,7 @@ function appendMoreRings() {
     if (objectFactory.visibleBalls < 3) {
         for (var i = objectFactory.visibleBalls; i < 3; i++) {
             var aiFactor = Math.floor(Math.random() * 70) + 50;
-            objectFactory.rings.push(new Ring(canvas.width / 2, objectFactory.rings[objectFactory.rings.length - 1].y - aiFactor - 200, aiFactor));
+            objectFactory.rings.push(new Ring(gameCanvas.width / 2, objectFactory.rings[objectFactory.rings.length - 1].y - aiFactor - 200, aiFactor));
         }
     }
 }
@@ -46,16 +44,11 @@ function generateRings(gameCanvas, modifier) {
 }
 
 function levelGenerator(gameCanvas, modifier) {
-    canvas = gameCanvas;
     var canvasW = gameCanvas.width;
     var canvasH = gameCanvas.height;
     var ctx = gameCanvas.getContext('2d');
 
-    if (!objectFactory.gameState) {
-        objectFactory.gameState = 'playing';
-    }
-
-    if (!objectFactory.ball && objectFactory.gameState !== 'gameOver') {
+    if (!objectFactory.ball && objectFactory.gameState === 'playing') {
         objectFactory.ball = new Ball(canvasW / 2, canvasH - 100);
     }
 
@@ -65,12 +58,12 @@ function levelGenerator(gameCanvas, modifier) {
 
     if (objectFactory.ball) {
         objectFactory.ball.draw(ctx);
-        objectFactory.ball.onKeyPress(canvasH);
+        objectFactory.ball.onKeyPress(ctx);
     }
 
     if (objectFactory.explodedBalls && objectFactory.explodedBalls.length) {
         for (var i = 0; i < objectFactory.explodedBalls.length; i++) {
-            objectFactory.explodedBalls[i].draw(canvas.getContext('2d'));
+            objectFactory.explodedBalls[i].draw(gameCanvas.getContext('2d'));
             objectFactory.explodedBalls[i].update();
         }
     }
@@ -95,4 +88,8 @@ function explodeBall() {
     }
 
     objectFactory.ball.remove = true;
+}
+
+function onPlayButtonClick() {
+    objectFactory.gameState = 'playing';
 }

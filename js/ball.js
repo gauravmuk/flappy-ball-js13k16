@@ -21,22 +21,29 @@ function Ball(x, y) {
         canvasContext.closePath();
     };
 
-    this.onKeyPress = function (canvasH) {
+    this.onKeyPress = function () {
         if (keysDown[32]) {
             repositionRings();
             this.y -= this.vy;
         } else {
-            if (this.y < canvasH - 100) {
+            if (this.y < gameCanvas.height - 100) {
                 this.y += this.gravity;
             }
         }
     };
 
+    this.getNewBallColor = function () {
+        var newColor = this.generateColor();
+        if (newColor != this.color) {
+            this.color = newColor;
+        } else {
+            this.getNewBallColor();
+        }
+    };
+
     this.changeColor = function () {
         updateScore();
-        while (this.generateColor() != this.color) {
-            this.color = this.generateColor();
-        }
+        this.getNewBallColor();
     };
 
     this.explode = function() {

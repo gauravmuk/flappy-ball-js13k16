@@ -9,7 +9,7 @@ function detectCollision() {
         var ring = objectFactory.rings[j];
 
         if (!ring.isScoreMarked) {
-            if (ball.y < ring.y - ring.r - ring.lineWidth / 2) {
+            if (ball.y < ring.y - ring.r - ring.lineWidth / 2 - ball.r) {
                 ring.isScoreMarked = true;
                 objectFactory.ball.changeColor();
             }

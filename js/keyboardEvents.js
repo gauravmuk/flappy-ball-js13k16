@@ -18,3 +18,7 @@ window.addEventListener('touchstart', function () {
 window.addEventListener('touchend', function () {
     keysDown[32] = false;
 });
+
+window.addEventListener('mousedown', function () {
+    onPlayButtonClick();
+});
