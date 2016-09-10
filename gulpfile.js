@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 
 gulp.task('all', function() {
     return gulp.src(['' +
@@ -18,5 +19,6 @@ gulp.task('all', function() {
     './js/generator.js',
     './js/game.js'])
         .pipe(concat('all.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('./dist/'));
 });
