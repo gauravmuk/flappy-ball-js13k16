@@ -6,7 +6,3 @@ function updateScore() {
 function resetScore() {
     objectFactory.score = 0;
 }
-
-function trackScore() {
-    resetScore();
-}

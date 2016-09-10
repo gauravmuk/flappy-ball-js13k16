@@ -1,7 +1,7 @@
 (function () {
     var then;
     var w = window;
-    var requestAnimationFrame = w.requestAnimationFrame;
+    var requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
     var gameCanvas = window.gameCanvas = document.createElement('canvas');
     var ctx = gameCanvas.getContext('2d');

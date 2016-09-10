@@ -17,6 +17,5 @@ function playExplosion() {
 }
 
 function playBallJump() {
-    console.log('ball jump');
     playSound(ballJumpSound);
 }

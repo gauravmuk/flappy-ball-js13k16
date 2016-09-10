@@ -201,11 +201,69 @@ var letters = letters = {
         [, ,],
         [, ,],
         [, ,]
+    ],
+    '2': [
+        [1,1,1],
+        [,,1],
+        [1,1,1],
+        [1,,],
+        [1,1,1]
+    ],
+    '3': [
+        [1,1,1],
+        [,,1],
+        [,1,1],
+        [,,1],
+        [1,1,1]
+    ],
+    '4': [
+        [1,,1,0],
+        [1,,1,],
+        [1,1,1,1],
+        [,,1,],
+        [,,1,],
+    ],
+    '5': [
+        [1,1,1,0],
+        [1,,,],
+        [1,1,1,],
+        [,,1],
+        [1,1,1],
+    ],
+    '6': [
+        [1,1,1,0],
+        [1,,,],
+        [1,1,1,],
+        [1,,1],
+        [1,1,1],
+    ],
+    '7': [
+        [1,1,1],
+        [,,1],
+        [,,1],
+        [,,1],
+        [,,1],
+    ],
+    '8': [
+        [1,1,1],
+        [1,,1],
+        [1,1,1],
+        [1,,1],
+        [1,1,1],
+    ],
+    '9': [
+        [1,1,1],
+        [1,,1],
+        [1,1,1],
+        [,,1],
+        [1,1,1],
     ]
 };
 
-function drawText(string, context, lineNumber) {
+function drawText(string, context, lineNumber, _x, _y, _size) {
     var needed = [];
+
+    string = string.toString();
     for (var i = 0; i < string.length; i++) {
         var letter = letters[string.charAt(i)];
         if (letter) { // because there's letters I didn't do
@@ -215,12 +273,12 @@ function drawText(string, context, lineNumber) {
 
     context.fillStyle = possibleColors[1];
 
-    var size = gameCanvas.width / 32;
-    var currX = (gameCanvas.width - size * string.length * 4) / 2;
+    var size = _size || gameCanvas.width / 32;
+    var currX = _x || (gameCanvas.width - size * string.length * 4) / 2;
 
     for (i = 0; i < needed.length; i++) {
         letter = needed[i];
-        var currY = gameCanvas.height / 4 + (lineNumber * size * 4) + (40 * lineNumber);
+        var currY = _y || gameCanvas.height / 4 + (lineNumber * size * 4) + (40 * lineNumber);
         var addX = 0;
         for (var y = 0; y < letter.length; y++) {
             var row = letter[y];
