@@ -169,7 +169,7 @@ var letters = letters = {
     ]
 };
 
-function drawText(string, lineNumber, _x, _y, _size) {
+function drawText(string, lineNumber, params) {
     var needed = [];
 
     string = string.toString();
@@ -180,21 +180,22 @@ function drawText(string, lineNumber, _x, _y, _size) {
         }
     }
 
-    ctx.fillStyle = possibleColors[1];
+    params = params || {};
+    ctx.fillStyle = params.color || '#A6E1FA';
 
-    var size = _size || gameCanvas.width / 32;
-    var currX = _x || (gameCanvas.width - size * string.length * 4) / 2;
+    var size = params.size || gameCanvas.width / 32;
+    var currX = params.x || (gameCanvas.width - size * string.length * 4) / 2;
 
     if (string === 'PLAY' || string === 'RESTART') {
         objectFactory.currentBtn = {
             startX: currX,
-            startY: _y || gameCanvas.height / 4 + (lineNumber * size * 4) + (40 * lineNumber)
+            startY: params.y || gameCanvas.height / 4 + (lineNumber * size * 4) + (40 * lineNumber)
         };
     }
 
     for (i = 0; i < needed.length; i++) {
         letter = needed[i];
-        var currY = _y || gameCanvas.height / 4 + (lineNumber * size * 4) + (40 * lineNumber);
+        var currY = params.y || gameCanvas.height / 4 + (lineNumber * size * 4) + (40 * lineNumber);
         var addX = 0;
         for (var y = 0; y < letter.length; y++) {
             var row = letter[y];

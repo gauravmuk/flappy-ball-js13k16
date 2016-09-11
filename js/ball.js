@@ -48,6 +48,7 @@ function Ball(x, y) {
 
     this.explode = function() {
         objectFactory.gameState = 'gameOver';
+        document.getElementsByTagName('canvas')[0].style.backgroundColor = 'black';
         bindGameOverEvents();
         explodeBall();
         playExplosion();

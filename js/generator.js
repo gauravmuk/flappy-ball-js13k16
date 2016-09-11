@@ -60,11 +60,11 @@ function explodeBall() {
 function notStartedGameState() {
     drawText('FLAPPY', 0);
     drawText('BALL', 1);
-    drawText('PLAY', 3);
+    drawText('PLAY', 3, {color: '#4CE0D2'});
 }
 
 function playingGameState(modifier) {
-    drawText(objectFactory.score, 0, 20, 20, 10);
+    drawText(objectFactory.score, 0, {x: 20, y: 20, size: 10, color: 'black'});
     objectFactory.ball.draw(ctx);
     objectFactory.ball.onKeyPress(ctx);
 
@@ -82,9 +82,9 @@ function gameOverState() {
         }
     }
 
-    drawText('GAME', 0);
-    drawText('OVER', 1);
-    drawText('RESTART', 3);
+    drawText('GAME', 0, {color: '#FF3C38'});
+    drawText('OVER', 1, {color: '#FF3C38'});
+    drawText('RESTART', 3.5, {color: '#00B295'});
 }
 
 function gameStateHandler(modifier) {

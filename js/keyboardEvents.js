@@ -7,7 +7,8 @@ function clickEventHandler() {
         && objectFactory.cursor.y <= objectFactory.currentBtn.endY) {
         keysDown = {};
         objectFactory.rings = [];
-        objectFactory.ball = new Ball(gameCanvas.width / 2, gameCanvas.height - 100);
+        objectFactory.ball = new Ball(gameCanvas.width / 2, gameCanvas.height < 500 ? gameCanvas.height - 20: gameCanvas.height - 100);
+        document.getElementsByTagName('canvas')[0].style.backgroundColor = '#B2DBBF';
 
         resetScore();
 
