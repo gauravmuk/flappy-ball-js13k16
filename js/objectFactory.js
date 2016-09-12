@@ -2,5 +2,6 @@ var objectFactory = {
     rings: [],
     gameState: 'notStarted',
     cursor: {},
-    ball: {}
+    ball: {},
+    previousScore: 0
 };

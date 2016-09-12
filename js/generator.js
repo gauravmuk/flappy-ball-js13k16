@@ -61,10 +61,12 @@ function notStartedGameState() {
     drawText('FLAPPY', 0);
     drawText('BALL', 1);
     drawText('PLAY', 3, {color: '#4CE0D2'});
+
+    drawText('SPACE OR TAP TO JUMP', 0, {color: '#4CE0D2', size: gameCanvas.height <= 768 ? 4 : 5, y: gameCanvas.height - 60});
 }
 
 function playingGameState(modifier) {
-    drawText(objectFactory.score, 0, {x: 20, y: 20, size: 10, color: 'black'});
+    drawText(objectFactory.score, 0, {x: 20, y: 20, size: 10, color: '#247BA0'});
     objectFactory.ball.draw(ctx);
     objectFactory.ball.onKeyPress(ctx);
 
@@ -84,6 +86,8 @@ function gameOverState() {
 
     drawText('GAME', 0, {color: '#FF3C38'});
     drawText('OVER', 1, {color: '#FF3C38'});
+
+    drawText('SCORE:' + objectFactory.previousScore, gameCanvas.height <= 768 ? 2.5 : 2, {color: '#FFF', size: 10});
     drawText('RESTART', 3.5, {color: '#00B295'});
 }
 
